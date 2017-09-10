@@ -9,22 +9,25 @@ public class AddressEncoderTest {
 
     @Test
     public void tryCatchBlock() {
-        String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = encoder.getEncodedAddress_usingTryCatch("The string", "ü@foo-bar");
+        String correct = "Gedenkst%C3%A4tte+Berliner+Mauer,Bernauer+Stra%C3%9Fe+111,Berlin,Deutschland";
+        String encoded = encoder.getEncodedAddress_usingTryCatch(
+                "Gedenkstätte Berliner Mauer", "Bernauer Straße 111", "Berlin", "Deutschland");
         assertEquals(correct, encoded);
     }
 
     @Test
     public void extractedMethod() {
-        String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = encoder.getEncodedAddress_usingExtractedMethod("The string", "ü@foo-bar");
+        String correct = "St.+Patrick%27s+Old+Cathedral,Mulberry+Street,Manhattan,New+York+City";
+        String encoded = encoder.getEncodedAddress_usingExtractedMethod(
+                "St. Patrick's Old Cathedral", "Mulberry Street", "Manhattan", "New York City");
         assertEquals(correct, encoded);
     }
 
     @Test
     public void wrappedException() {
-        String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = encoder.getEncodedAddress_usingWrapper("The string", "ü@foo-bar");
+        String correct = "O%27Reilly+Media,1005+Gravenstein+Hwy+N,Sebastopol,CA";
+        String encoded = encoder.getEncodedAddress_usingWrapper(
+                "O'Reilly Media", "1005 Gravenstein Hwy N", "Sebastopol", "CA");
         assertEquals(correct, encoded);
     }
 }

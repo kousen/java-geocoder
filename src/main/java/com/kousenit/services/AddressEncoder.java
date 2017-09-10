@@ -30,7 +30,7 @@ public class AddressEncoder {
         return s;
     }
 
-    public String getEncodedAddress_extractedMethod(String... address) {
+    public String getEncodedAddress_usingExtractedMethod(String... address) {
         return Arrays.stream(address)
                 .map(this::encodeString)
                 .collect(Collectors.joining(","));

@@ -17,7 +17,7 @@ public class AddressEncoderTest {
     @Test
     public void extractedMethod() {
         String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = encoder.getEncodedAddress_extractedMethod("The string", "ü@foo-bar");
+        String encoded = encoder.getEncodedAddress_usingExtractedMethod("The string", "ü@foo-bar");
         assertEquals(correct, encoded);
     }
 

@@ -1,0 +1,22 @@
+== Geocoder Example In Java 8+
+
+This example uses `Gson` and `OkHttp` to call the Google GEocoder, documented at https://developers.google.com/maps/documentation/geocoding/intro . Note that the docs strongly imply you need a key, but as of Sep 2017 you still don't. :)
+
+The `AddressEncoder` class exists to show the three primary ways to deal with exceptions in streams. Since the `URLEncoder.encode` method throws an `UnsupportedEncodingException`, which is a checked exception, the code must prepare for that in order to complie.
+
+The three approaches are:
+
+* An try/catch block is embedded in the `Function` argument to the `map` method, which is ugly, but works (`getEncodedAddress_usingTryCatch`).
+* The encoding process is extracted to a separate method, which is then accessed using a method reference. This is much cleaner and easier to read (`getEncodedAddress_usingExtractedMethod`). The extracted method is `encodeString`.
+* A wrapper method is added that takes a new functional interface, `FunctionWithException`. The wrapper method invokes the `apply` method, catches any `Exception` that occurs, and rethrows it as unchecked. The `wrapper` method returns a standard `java.util.function.Function` instance, so it can be used in a `map` method in a stream pipeline (`getEncodedAddress_usingWrapper`).
+
+Note that the Google Geocoder may not (yet) take a key, but it is throttled by Google. The free version supports only 2500 request/day (generally not a problem) and only 50 request/sec (which often is, especially when running tests). Therefore, if you add your own address to the test class `GeocoderServiceTest`, be sure to stay within those limits.
+
+This is an extended example based on a discussion of exception handling in streams in the book _Modern Java Recipes_ (http://shop.oreilly.com/product/0636920056669.do), from O'Reilly Media. Please let me know if there are any problems. Better yet, feel free to fork the repo and send me a pull request if you find any errors.
+
+|===
+|Ken Kousen
+|Kousen IT, Inc.
+|ken.kousen@kousenit.com
+|===
+

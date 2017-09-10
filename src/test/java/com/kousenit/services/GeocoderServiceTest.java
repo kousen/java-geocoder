@@ -6,7 +6,8 @@ import org.junit.Test;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GeocoderServiceTest {
     private GeocoderService service = new GeocoderService();
@@ -35,5 +36,9 @@ public class GeocoderServiceTest {
         }
     }
 
-
+    @Test
+    public void emptyAddress() {
+        Optional<Site> optionalSite = service.getLatLng();
+        assertTrue(!optionalSite.isPresent());
+    }
 }

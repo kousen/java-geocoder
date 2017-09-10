@@ -1,7 +1,6 @@
 package com.kousenit.entities;
 
 public class Site {
-    private Integer id;
     private String name;
     private double latitude;
     private double longitude;
@@ -12,14 +11,6 @@ public class Site {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {

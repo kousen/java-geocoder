@@ -5,26 +5,26 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class AddressEncoderTest {
-    private GeocoderService service = new GeocoderService();
+    private AddressEncoder encoder = new AddressEncoder();
 
     @Test
     public void tryCatchBlock() {
         String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = service.getEncodedAddress_usingTryCatch("The string", "ü@foo-bar");
+        String encoded = encoder.getEncodedAddress_usingTryCatch("The string", "ü@foo-bar");
         assertEquals(correct, encoded);
     }
 
     @Test
     public void extractedMethod() {
         String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = service.getEncodedAddress_usingTryCatch("The string", "ü@foo-bar");
+        String encoded = encoder.getEncodedAddress_extractedMethod("The string", "ü@foo-bar");
         assertEquals(correct, encoded);
     }
 
     @Test
     public void wrappedException() {
         String correct = "The+string,%C3%BC%40foo-bar";
-        String encoded = service.getEncodedAddress_usingTryCatch("The string", "ü@foo-bar");
+        String encoded = encoder.getEncodedAddress_usingWrapper("The string", "ü@foo-bar");
         assertEquals(correct, encoded);
     }
 }

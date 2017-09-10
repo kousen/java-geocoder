@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("unused")
 public class AddressEncoder {
     public String encodedAddressUsingTryCatch(String... address) {
         return Arrays.stream(address)

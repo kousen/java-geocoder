@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AddressEncoder {
-    public String getEncodedAddress_usingTryCatch(String... address) {
+    public String encodedAddressUsingTryCatch(String... address) {
         return Arrays.stream(address)
                 .map(s -> {
                     try {
@@ -30,7 +30,7 @@ public class AddressEncoder {
         return s;
     }
 
-    public String getEncodedAddress_usingExtractedMethod(String... address) {
+    public String encodedAddressUsingExtractedMethod(String... address) {
         return Arrays.stream(address)
                 .map(this::encodeString)
                 .collect(Collectors.joining(","));
@@ -46,7 +46,7 @@ public class AddressEncoder {
         };
     }
 
-    public String getEncodedAddress_usingWrapper(String... address) {
+    public String encodedAddressUsingWrapper(String... address) {
         return Arrays.stream(address)
                 .map(wrapper(s -> URLEncoder.encode(s, "UTF-8")))
                 .collect(Collectors.joining(","));

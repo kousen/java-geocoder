@@ -28,7 +28,7 @@ public class GeocoderService {
     public Optional<Site> getLatLng(String... address) {
         Site site = null;
         String geocoderUrl = String.format("%s?address=%s", BASE,
-                encoder.getEncodedAddress_usingExtractedMethod(address));
+                encoder.encodedAddressUsingExtractedMethod(address));
         Request request = new Request.Builder()
                 .url(geocoderUrl)
                 .build();

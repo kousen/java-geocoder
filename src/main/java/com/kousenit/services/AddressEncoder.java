@@ -26,9 +26,8 @@ public class AddressEncoder {
         try {
             return URLEncoder.encode(s, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return s;
     }
 
     public String encodedAddressUsingExtractedMethod(String... address) {
